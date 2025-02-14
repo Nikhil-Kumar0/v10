@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You My Dear</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff7eb9, #ff65a3, #ff165d);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            padding: 3em;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-out;
+            max-width: 600px;
+            margin: 20px;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3em;
+            margin-bottom: 0.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        p {
+            color: white;
+            font-size: 1.5em;
+            margin-bottom: 1.5em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            line-height: 1.6;
+        }
+
+        .message {
+            font-style: italic;
+            font-size: 1.2em;
+            margin: 20px 0;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .home-btn {
+            background: linear-gradient(135deg, #ff4d6d, #ff7f7f);
+            border: none;
+            padding: 15px 40px;
+            color: white;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .home-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .emoji {
+            position: absolute;
+            font-size: 2.5em;
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* Position emojis with more variety */
+        .emoji:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .emoji:nth-child(2) { top: 20%; right: 10%; animation-delay: 1s; }
+        .emoji:nth-child(3) { bottom: 10%; left: 15%; animation-delay: 2s; }
+        .emoji:nth-child(4) { bottom: 20%; right: 15%; animation-delay: 3s; }
+        .emoji:nth-child(5) { top: 50%; left: 5%; animation-delay: 4s; }
+        .emoji:nth-child(6) { top: 30%; right: 5%; animation-delay: 5s; }
+
+        .heart {
+            position: relative;
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+    <script>
+        if(!sessionStorage.getItem('from_index')) {
+            window.location.href = 'index.html';
+        }
+    </script>
+</head>
+<body>
+    <!-- More emojis for better effect -->
+    <div class="emoji">❤️</div>
+    <div class="emoji">💖</div>
+    <div class="emoji">💕</div>
+    <div class="emoji">💗</div>
+    <div class="emoji">💝</div>
+    <div class="emoji">💓</div>
+    
+    <div class="container">
+        <h1>Thank You For Reading! <span class="heart">💖</span></h1>
+        <p>Your presence makes everything more beautiful.</p>
+        <div class="message">
+            "Thank you for taking the time to read through my message. 
+            Your smile means the world to me! 🌟"
+        </div>
+        <a href="index.html" class="home-btn" onclick="sessionStorage.clear()">Back to Start ↺</a>
+    </div>
+
+    <script>
+        // Add floating emoji animation
+        function createFloatingEmoji() {
+            const emoji = document.createElement('div');
+            emoji.className = 'emoji';
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            emoji.innerHTML = ['❤️', '💖', '💕', '💗', '💝', '💓'][Math.floor(Math.random() * 6)];
+            document.body.appendChild(emoji);
+            setTimeout(() => emoji.remove(), 6000);
+        }
+
+        // Create new emojis periodically
+        setInterval(createFloatingEmoji, 2000);
+    </script>
+</body>
+</html> 
